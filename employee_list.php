@@ -15,6 +15,7 @@ function employee_list() {
                 <thead>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>File</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
@@ -23,8 +24,13 @@ function employee_list() {
                             <td><?= $i+1 ?></td>
                             <td><?= $employee->name ?></td>
                             <td>
-                            <a href="<?= admin_url('admin.php?page=employee-edit&id='.$employee->id) ?>" class="page-title-action">Edit</a>
-                            <a href="#" class="page-title-action" onclick="deleteData(<?= $employee->id ?>)">Delete</a>
+                                <?php if(!empty($employee->filename)) { ?>
+                                    <a href="<?= $employee->filename ?>" class="page-title-action">Open File</a>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <a href="<?= admin_url('admin.php?page=employee-edit&id='.$employee->id) ?>" class="page-title-action">Edit</a>
+                                <a href="#" class="page-title-action" onclick="deleteData(<?= $employee->id ?>)">Delete</a>
                             </td>
                         </tr>
                     <?php } ?>
