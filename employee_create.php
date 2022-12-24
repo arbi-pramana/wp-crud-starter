@@ -12,21 +12,23 @@ ob_start();
 function employee_create()
 {
 ?>
-<div id="wpbody" role="main">
-    <div id="wpbody" role="main">
-        <div class="wrap">
-            <h1 class="wp-heading-inline">Add Employee</h1>
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div style="margin-top: 10px;">
-                    <label>Name </label><br>
-                    <input type="text" name="name"><br>
-                    <label>File </label><br>
-                    <input type="file" name="filename"><br>
-                    <br>
-                    <input type="submit" name="submit" id="submit" class="button button-primary" value="Add New">
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Add Employee</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 bg-white p-4 rounded">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div style="margin-top: 10px;">
+                <label>Name </label><br>
+                <input type="text" name="name" class="form-control"><br>
+                <label>File </label><br>
+                <input type="file" name="filename" class="form-control"><br>
+                <br>
+                <input type="submit" name="submit" class="btn btn-sm btn-success" value="Add New">
+            </div>
+        </form>
     </div>
 </div>
 
@@ -44,6 +46,8 @@ function employee_create()
             } else {
                echo $movefile['error'];
             }
+        } else{
+            $imageurl = '';
         }
 
         //init data 

@@ -18,26 +18,27 @@ function employee_edit()
     $table_name = $wpdb->prefix . 'employee_list';
     $employee = $wpdb->get_row("SELECT * from $table_name where id = $id");
 ?>
-<div id="wpbody" role="main">
-    <div id="wpbody" role="main">
-        <div class="wrap">
-            <h1 class="wp-heading-inline">Edit Employee</h1>
-            <form action="#" method="post" enctype="multipart/form-data">
-                <div style="margin-top: 10px;">
-                    <label>Name </label><br>
-                    <input type="text" name="name" value="<?= $employee->name ?>"><br>
-                    <br>
-                    <label>File </label> <br>
-                    <input type="file" name="filename"><br>
-                    <?php if(!empty($employee->filename)) { ?>
-                        <br>
-                        <a href="<?= $employee->filename ?>" class="page-title-action">Open File</a><br>
-                    <?php } ?>
-                    <br>
-                    <input type="submit" name="submit" id="submit" class="button button-primary" value="Update">
-                </div>
-            </form>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Edit Employee</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 bg-white p-4 rounded">
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div style="margin-top: 10px;">
+                <label>Name </label><br>
+                <input type="text" name="name" class="form-control" value="<?= $employee->name ?>"><br>
+                <br>
+                <label>File </label> <br>
+                <input type="file" name="filename" class="form-control"><br>
+                <?php if(!empty($employee->filename)) { ?>
+                    <a href="<?= $employee->filename ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> Open File</a><br>
+                <?php } ?>
+                <br>
+                <input type="submit" name="submit" id="submit" class="btn btn-sm btn-primary" value="Update">
+            </div>
+        </form>
     </div>
 </div>
 

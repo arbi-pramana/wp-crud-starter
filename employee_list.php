@@ -4,39 +4,41 @@ function employee_list() {
     $table_name = $wpdb->prefix . 'employee_list';
     $employees = $wpdb->get_results("SELECT * from $table_name");
 ?>
-<div id="wpbody" role="main">
-    <div id="wpbody" role="main">
-        <div class="wrap">
-            <h1 class="wp-heading-inline">Employee</h1>
-            <a href="http://localhost/coba-plugin/wp-admin/admin.php?page=employee-create" class="page-title-action">Add New</a>
-            <hr class="wp-header-end">
-            <br>
-            <table class="wp-list-table widefat fixed striped table-view-list" id="table">
-                <thead>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>File</th>
-                    <th>Action</th>
-                </thead>
-                <tbody>
-                    <?php foreach($employees as $i => $employee) { ?>
-                        <tr>
-                            <td><?= $i+1 ?></td>
-                            <td><?= $employee->name ?></td>
-                            <td>
-                                <?php if(!empty($employee->filename)) { ?>
-                                    <a href="<?= $employee->filename ?>" class="page-title-action">Open File</a>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <a href="<?= admin_url('admin.php?page=employee-edit&id='.$employee->id) ?>" class="page-title-action">Edit</a>
-                                <a href="#" class="page-title-action" onclick="deleteData(<?= $employee->id ?>)">Delete</a>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            Employee
+            <a href="<?= admin_url('admin.php?page=employee-create') ?>" class="btn btn-sm btn-outline-success"><i class="fa fa-plus"></i> Add New</a>
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 p-4 bg-white rounded">
+        <table class="table table-striped table-hover" id="table">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>File</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <?php foreach($employees as $i => $employee) { ?>
+                    <tr>
+                        <td><?= $i+1 ?></td>
+                        <td><?= $employee->name ?></td>
+                        <td>
+                            <?php if(!empty($employee->filename)) { ?>
+                                <a href="<?= $employee->filename ?>" class="btn btn-sm btn-outline-secondary"><i class="fa fa-download"></i> Open File</a>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <a href="<?= admin_url('admin.php?page=employee-edit&id='.$employee->id) ?>" class="btn btn-sm btn-outline-info"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="#" onclick="deleteData(<?= $employee->id ?>)" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </div>
 <script>
@@ -54,7 +56,10 @@ function employee_list() {
 </script>
 <?php
 }
-add_shortcode('short_employee_list', 'employee_list');
-require_once(ROOTDIR.'partials/head.php');
-require_once(ROOTDIR.'partials/scripts.php');
+try {
+    add_shortcode('short_employee_list', 'employee_list');
+    require_once(ROOTDIR.'partials/head.php');
+    require_once(ROOTDIR.'partials/scripts.php');
+} catch (\Throwable $th) {
+}
 ?>
