@@ -35,7 +35,7 @@ add_action('admin_menu', 'employee_menu');
 
 function employee_menu() {
     //adding plugin in menu
-    add_menu_page('employee_list', //page title
+    add_menu_page('employee-list', //page title
         'Employees', //menu title
         'manage_options', //capabilities
         'employee-list', //menu slug
