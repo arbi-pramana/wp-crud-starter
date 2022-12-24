@@ -40,7 +40,8 @@ function employee_menu() {
         'manage_options', //capabilities
         'employee-list', //menu slug
         'employee_list', //function
-        plugin_dir_url( __FILE__ ) . 'images/menu.png'
+        plugin_dir_url( __FILE__ ) . 'images/menu.png', //icon
+        2, //position menu
     );
     //adding submenu to a menu
     add_submenu_page('employee-list',//parent page slug
