@@ -5,7 +5,7 @@
   Description: This plugin is very easy for starter template to create CRUD in Wordpress
   Version: 1.0.0
   Author: Arbi Pramana
-  Author URI: http://arbipram.com
+  Author URI: https://arbipram.com
 */
 global $db_version;
 $db_version = '1.0';
